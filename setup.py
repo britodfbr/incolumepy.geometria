@@ -1,35 +1,35 @@
 from setuptools import setup, find_packages
 import os
 
-def read(*rnames):
-    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+def myread(*pnames):
+    return open(os.path.join(os.path.dirname(__file__), *pnames)).read()
 
 NAME = 'incolumepy.geometria'
-DESCRIPTION = "package with autotesting"
+DESCRIPTION = "package with autotesting ()"
 AUTHOR = "incolume.com.br"
 AUTHOR_EMAIL = "contato at incolume.com.br"
 URL = "http://www.incolume.com.br"
 LICENSE = open(os.path.join(os.path.dirname(__file__), "LICENSE")).read()
 LONG_DESCRIPTION = (
-    open('README.md').read()
+    open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
     + '\n'
     'History\n'
     '=======\n'
     + '\n' +
-    open(os.path.join("docs", "HISTORY.rst")).read()
+    open(os.path.join(os.path.dirname(__file__), "docs", "HISTORY.rst")).read()
     + "\n"
     'Contributors\n'
     '============\n'
     + '\n' +
-    open(os.path.join('docs', 'CONTRIBUTORS.rst')).read()
+    open(os.path.join(os.path.dirname(__file__),'docs', 'CONTRIBUTORS.rst')).read()
     + '\n'
     'Changes\n'
     '=======\n'
     + '\n' +
-    open(os.path.join('docs', 'CHANGES.rst')).read()
+    open(os.path.join(os.path.dirname(__file__),'docs', 'CHANGES.rst')).read()
     + '\n')
 
-VERSION = read(NAME.split('.')[0], NAME.split('.')[1], "version.txt").strip()
+VERSION = myread(NAME.split('.')[0], NAME.split('.')[1], "version.txt").strip()
 
 setup(name=NAME,
       version=VERSION,
@@ -46,7 +46,7 @@ setup(name=NAME,
       author_email=AUTHOR_EMAIL,
       url=URL,
       license=LICENSE,
-      packages=find_packages(exclude=['ez_setup']),
+      packages=find_packages(exclude=['ez_setup', "*.tests", "*.tests.*", "tests.*", "tests"]),
       namespace_packages=[NAME.split('.')[0]],
       include_package_data=True,
       zip_safe=False,
@@ -76,4 +76,5 @@ setup(name=NAME,
       ##paster_plugins.txt = setuptools.command.egg_info:write_arg
       # """,
       # paster_plugins = [''],
+      test_suite='test',
       )
