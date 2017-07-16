@@ -9,24 +9,24 @@ DESCRIPTION = "package with autotesting ()"
 AUTHOR = "incolume.com.br"
 AUTHOR_EMAIL = "contato at incolume.com.br"
 URL = "http://www.incolume.com.br"
-LICENSE = open(os.path.join(os.path.dirname(__file__), "LICENSE")).read()
+LICENSE = myread("LICENSE")
 LONG_DESCRIPTION = (
-    open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
+    myread('README.md')
     + '\n'
     'History\n'
     '=======\n'
     + '\n' +
-    open(os.path.join(os.path.dirname(__file__), "docs", "HISTORY.rst")).read()
+    myread("docs", "HISTORY.rst")
     + "\n"
     'Contributors\n'
     '============\n'
     + '\n' +
-    open(os.path.join(os.path.dirname(__file__),'docs', 'CONTRIBUTORS.rst')).read()
+    myread('docs', 'CONTRIBUTORS.rst')
     + '\n'
     'Changes\n'
     '=======\n'
     + '\n' +
-    open(os.path.join(os.path.dirname(__file__),'docs', 'CHANGES.rst')).read()
+    myread('docs', 'CHANGES.rst')
     + '\n')
 
 VERSION = myread(NAME.split('.')[0], NAME.split('.')[1], "version.txt").strip()
@@ -53,7 +53,6 @@ setup(name=NAME,
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
-          # 'pytest',
       ],
       entry_points={
           'console_scripts': [
