@@ -1,0 +1,6 @@
+graft src/
+graft tests/
+global-exclude *.swp *~ *.old *.py
+include *.cfg *.in *.md *.rst *.txt
+recursive-include docs *
+recursive-include incolumepy *
