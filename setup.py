@@ -29,7 +29,7 @@ LONG_DESCRIPTION = (
     myread('docs', 'CHANGES.rst')
     + '\n')
 
-VERSION = myread(NAME.split('.')[0], NAME.split('.')[1], "version.txt").strip()
+VERSION = myread(*NAME.split('.'), "version.txt").strip()
 
 setup(name=NAME,
       version=VERSION,
